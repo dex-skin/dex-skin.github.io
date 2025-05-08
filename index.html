@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="DexSkin: High-Coverage Conformable Robotic Skin for Learning Contact-Rich Manipulation">
+  <meta name="keywords" content="Tactile Sensing, Contact-Rich Manipulation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DexSkin | High-Coverage Conformable Robotic Skin for Learning Contact-Rich Manipulation</title>
+
+  <!-- Thumbnail for social media sharing -->
+  <meta property="og:image" content="media/thumbnail.jpg">
+
+  <!-- Favicon -->
+  <link rel="icon" href="media/thumbnail.jpg" type="image/jpeg">
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+  </script>
+
+  <script>
+    function updateInTheWild() {
+      var task = document.getElementById("inthewild-video-menu").value;
+
+      console.log("updateInTheWild", task)
+
+      var video = document.getElementById("inthewild-video");
+      video.src = "media/videos/" + 
+                  task + 
+                  ".m4v"
+      video.play();
+    }
+
+    function updateBimanual() {
+      var task = document.getElementById("bimanual-video-menu").value;
+
+      console.log("updateBimanual", task)
+
+      var video = document.getElementById("bimanual-video");
+      video.src = "media/videos/" + 
+                  task + 
+                  ".m4v"
+      video.play();
+    }
+
+    function updateClothes() {
+      var task = document.getElementById("clothes-video-menu").value;
+
+      console.log("updateclothes", task)
+
+      var video = document.getElementById("clothes-video");
+      video.src = "media/videos/" + 
+                  task + 
+                  ".mp4"
+      video.play();
+    }
+  </script>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+
+  <link rel="stylesheet" href="./static/source_serif_4.css">
+  <link rel="stylesheet" href="./static/source_sans_3.css">  
+  <link rel="stylesheet" href="./static/academicons.min.css">
+  <link rel="stylesheet" href="./static/fontawesome/css/fontawesome.css">
+  <link rel="stylesheet" href="./static/fontawesome/css/brands.css">
+  <link rel="stylesheet" href="./static/fontawesome/css/light.css">
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body onload="updateInTheWild();updateBimanual();">
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-fullhd">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title", style="color: black;">DexSkin: High-Coverage Conformable Robotic <br> Skin for Learning Contact-Rich Manipulation</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <strong>Anonymous Author(s)</strong><br>
+              Paper ID 510
+            </span>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-widescreen">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-vcentered is-centered">
+          <div class="column is-fullwidth has-text-centered">
+            <video id="teaser" autoplay muted loop controls width="100%">
+              <source src="media/videos/DexSkin_web_compressed.mp4" type="video/mp4">
+            </video>
+            <p style="font-size: 1rem; font-style: italic; margin-top: 0.5em; text-align: right;">
+              (Unmute for sound)
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="container is-max-widescreen">
+<div class="columns is-centered has-text-centered">
+  <div class="column is-four-fifths">
+    <h2 class="title is-3">Abstract</h2>
+    <div class="content has-text-justified">
+      <p>
+        Human skin provides a rich tactile sensing stream, localizing intentional and unintentional contact events over a large and contoured region. 
+        Replicating these tactile sensing capabilities for dexterous robotic manipulation systems remains a longstanding challenge.
+        In this work, we take a step towards this goal by introducing DexSkin. DexSkin is a soft, conformable capacitive electronic skin that enables sensitive, localized, and calibratable tactile sensing, and can be tailored to varying geometries.
+        We demonstrate its efficacy for learning downstream robotic manipulation by sensorizing a pair of parallel jaw gripper fingers, providing tactile coverage across almost the entire finger surfaces.
+        We empirically evaluate DexSkin's capabilities in learning challenging manipulation tasks that require sensing coverage across the entire surface of the fingers, such as reorienting objects in hand and wrapping elastic bands around boxes, in a learning-from-demonstration framework. We then show that, critically for data-driven approaches, DexSkin can be calibrated to enable model transfer across sensor instances, and demonstrate its applicability to online reinforcement learning on real robots. 
+        Our results highlight DexSkin's suitability and practicality for learning real-world, contact-rich manipulation.
+      </p>
+    </div>
+  </div>
+</div>
+
+
+<hr class="rounded">
+<div class="rows">
+  <h2 class="title is-3">Overview of Dexskin</h2>
+
+  <div class="columns is-multiline">
+    <div class="column is-half">
+      <p class="content has-text-justified">
+        DexSkin is an electrically addressable tactile sensor based on a capacitive mechanism. It is composed of a highly deformable dielectric layer sandwiched between two soft electrode plates. The electrode intersections form individually addressable taxels. We tailor the sensor into a single sheet that can envelop a curved, fingertip-like shape. On the right, we show one gripper finger assembly sensorized with DexSkin, composed of the sensing skin wrapped around a soft TPE sleeve and rigid PLA finger core.
+      </p>
+    </div>
+    <div class="column is-half">
+      <div class="sketchfab-embed-wrapper" style="width: 100%;">
+        <div style="position: relative; padding-top: 56.25%; height: 0; overflow: hidden;">
+          <iframe title="DexSkin FingerAssembly"
+                  src="https://sketchfab.com/models/d2b2c7b46a974a2eb32ba933a100b0a2/embed"
+                  frameborder="0" allow="autoplay; fullscreen; xr-spatial-tracking"
+                  mozallowfullscreen="true" webkitallowfullscreen="true"
+                  allowfullscreen
+                  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+          </iframe>
+        </div>
+        <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
+          <a href="https://sketchfab.com/3d-models/dexskin-fingerassembly-d2b2c7b46a974a2eb32ba933a100b0a2?utm_medium=embed&utm_campaign=share-popup&utm_content=d2b2c7b46a974a2eb32ba933a100b0a2"
+            target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">DexSkin FingerAssembly</a>
+          by
+          <a href="https://sketchfab.com/dexskinrobot?utm_medium=embed&utm_campaign=share-popup&utm_content=d2b2c7b46a974a2eb32ba933a100b0a2"
+            target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">dexskinrobot</a>
+          on
+          <a href="https://sketchfab.com"
+            target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="rounded">
+<div class="rows">
+  <h2 class="title is-3">Dexterous Manipulation Tasks</h2>
+
+  <!-- pen -->
+<div class="content">
+  <h3 class="title is-4 has-text-centered">Pen Reorientation</h3>
+  <p class="content has-text-justified" style="margin-top: -0.5em;">
+    High tactile spatial resolution is essential for tasks such as in-hand pose estimation. To evaluate DexSkin's resolution, the robot must pick up a pen and push it against a nearby cabinet to reorient it in-hand, using only tactile and proprioceptive feedback. Additionally, it must be robust to human perturbations at test time.
+  </p>
+  <div class="columns">
+    <div class="column is-one-third">
+      <div class="has-text-centered">
+        <video width="100%" controls muted>
+          <source src="media/videos/tac_perturb.mp4" type="video/mp4">
+        </video>
+        <p class="is-size-6">With DexSkin</p>
+      </div>
+    </div>
+    <div class="column is-one-third">
+      <div class="has-text-centered">
+        <video width="100%" controls muted>
+          <source src="media/videos/spatial_avg_perturb.mp4" type="video/mp4">
+        </video>
+        <p class="is-size-6">Spatial Average Only</p>
+      </div>
+    </div>
+    <div class="column is-one-third">
+      <div class="has-text-centered">
+        <video width="100%" controls muted>
+          <source src="media/videos/no_tac_perturb.mp4" type="video/mp4">
+        </video>
+        <p class="is-size-6">No Tactile</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Berry Picking -->
+<div class="content">
+  <h3 class="title is-4 has-text-centered">Berry Picking</h3>
+  <p class="content has-text-justified" style="margin-top: -0.5em;">
+  Tactile sensors are a promising source of signals for robots to learn by environment interaction. Here, we validate DexSkin's suitability for online learning by adapting a vision-only policy to perform delicate grasping of fragile fruits via real-world residual reinforcement learning.
+  </p>
+  <div class="columns">
+    <div class="column is-one-third">
+      <div class="has-text-centered">
+        <video width="100%" controls muted>
+          <source src="media/videos/residual_berry.mp4" type="video/mp4">
+        </video>
+        <p class="is-size-6">Residual Policy trained with DexSkin</p>
+      </div>
+    </div>
+    <div class="column is-one-third">
+      <div class="has-text-centered">
+        <video width="100%" controls muted>
+          <source src="media/videos/random_berry.mp4" type="video/mp4">
+        </video>
+        <p class="is-size-6">Random Residual Policy</p>
+      </div>
+    </div>
+    <div class="column is-one-third">
+      <div class="has-text-centered">
+        <video width="100%" controls muted>
+          <source src="media/videos/no_tac_berry.mp4" type="video/mp4">
+        </video>
+        <p class="is-size-6">No Tactile</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Box Packaging -->
+<div class="content">
+  <h3 class="title is-4 has-text-centered">Box Packaging</h3>
+  <p class="content has-text-justified" style="margin-top: -0.5em;">
+    Humans often use the dorsal side of their fingertips for tasks like flipping switches or removing batteries. To evaluate similar capabilities, the robot must secure the lid of a container with a rubber band. The robot is randomly provided with an intact band or a perforated band that will snap if used. In the latter case, the robot must retrieve a replacement.
+  </p>
+
+  <div class="columns">
+    <div class="column is-one-half">
+      <div class="has-text-centered">
+        <video width="100%" controls muted>
+          <source src="media/videos/tac_perf.mp4" type="video/mp4">
+        </video>
+        <p class="is-size-6">With DexSkin, Perforated Band</p>
+      </div>
+    </div>
+    <div class="column is-one-half">
+      <div class="has-text-centered">
+        <video width="100%" controls muted>
+          <source src="media/videos/notac_perf.mp4" type="video/mp4">
+        </video>
+        <p class="is-size-6">No Tactile, Perforated Band</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="columns">
+    <div class="column is-one-half">
+      <div class="has-text-centered">
+        <video width="100%" controls muted>
+          <source src="media/videos/tac_nonperf.mp4" type="video/mp4">
+        </video>
+        <p class="is-size-6">With DexSkin, Intact Band</p>
+      </div>
+    </div>
+    <div class="column is-one-half">
+      <div class="has-text-centered">
+        <video width="100%" controls muted>
+          <source src="media/videos/nontac_nonperf.mp4" type="video/mp4">
+        </video>
+        <p class="is-size-6">No Tactile, Intact Band</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<hr class="rounded">
+
+<div class="rows">
+  <h2 class="title is-3">Sensor Activation Demos</h2>
+    <p class="content has-text-justified">
+    Here we show visualizations of DexSkin tactile sensor readings while pressing on different regions of the finger with one or more contacts. These demonstrations highlight key attributes of DexSkin, such as spatial resolution, force sensitivity to light contacts < 2g, and coverage across the full finger surface.</p>
+    <div class="columns">
+      <div class="column has-text-centered">
+        <div class="select is-rounded">     
+          <select id="clothes-video-menu" onchange="updateClothes()">
+            <option value="general_contacts" selected="selected">General Contacts</option>
+          <option value="row_and_col">Row and Column Localization</option>
+          <option value="neighbors">Differentiating Neighboring Taxels</option>
+          <option value="dorsal_side">Dorsal-Side Contacts</option>
+          <option value="sensitivity">Sensitivity</option>
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+      <div class="column has-text-centered">
+        <p style="text-align:center;">
+          <video id="clothes-video" width="100%" height="100%" controls autoplay loop muted>
+            <source src="media/videos/general_contacts.mp4" type="video/mp4">
+          </video>
+        </p>
+      </div>
+    </div>
+</div>
+
+<hr class="rounded">
+
+
+</section>
+</div>
+
+</body>
+</html>
