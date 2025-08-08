@@ -323,3 +323,13 @@ hr.rounded {
   padding-top: 0.2em;
 }
 
+:root {
+  --page-max: 1100px;                 
+  --page-pad: clamp(24px, 6vw, 56px);
+}
+.container.is-fullhd,
+.container.is-max-widescreen {
+  max-width: var(--page-max);
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+}
