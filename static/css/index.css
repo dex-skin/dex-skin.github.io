@@ -333,3 +333,9 @@ hr.rounded {
   padding-left: var(--page-pad);
   padding-right: var(--page-pad);
 }
+
+.hero:first-of-type .container {
+  max-width: var(--title-max);
+  padding-left: var(--title-pad);
+  padding-right: var(--title-pad);
+}
