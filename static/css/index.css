@@ -292,20 +292,17 @@ hr.rounded {
   flex-wrap: wrap;
   justify-content: center;
   gap: 6px 18px;          
-  padding-top: 0.6em;
 }
 
-.author-name { 
-  font-family: 'Google Sans', sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.8;
-}
+.author-break { flex-basis: 100%; height: 0; }
 
-.author-name:not(:last-child)::after {
-  content: ", ";
-  color: #999;
-}
+.author-name { font-size: 1.15rem; line-height: 1.8; }
+.author-container a { color: #000 !important; text-decoration: none; }
+.author-container a:hover { color: #111 !important; text-decoration: underline; }
 
+/* Commas between names, but not after #3 or the last author */
+.author-container .author-name:not(:last-child)::after { content: ", "; color: #999; }
+.author-container .author-name:nth-child(3)::after { content: ""; }
 .affiliation {
   display: block;         
   text-align: center;
@@ -325,3 +322,4 @@ hr.rounded {
   text-align: center;
   padding-top: 0.2em;
 }
+
