@@ -339,3 +339,8 @@ hr.rounded {
   max-width: calc(var(--page-max) - 2 * var(--page-pad));
   margin: 0 auto;            
 }
+
+.hero .publication-title {
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.15;
+}
