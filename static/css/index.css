@@ -285,3 +285,43 @@ hr.rounded {
   hyphens: none !important;
   line-height: unset !important;
 }
+
+/* Title area: authors + affiliation + venue */
+.author-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px 18px;          
+  padding-top: 0.6em;
+}
+
+.author-name { 
+  font-family: 'Google Sans', sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+.author-name:not(:last-child)::after {
+  content: ", ";
+  color: #999;
+}
+
+.affiliation {
+  display: block;         
+  text-align: center;
+  padding-top: 0.4em;
+}
+
+.affiliation img {
+  height: 50px;
+  opacity: 0.95;
+}
+
+.venue {
+  color: #2E2D29;
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+  padding-top: 0.2em;
+}
