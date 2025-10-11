@@ -128,7 +128,9 @@
           <div class="button-container">
             <a href="https://arxiv.org/abs/2509.18830" target="_blank" class="button"><i class="ai ai-arxiv"></i>&emsp14;arXiv</a>
             <a href="https://arxiv.org/pdf/2509.18830" target="_blank" class="button"><i class="fa-light fa-file"></i>&emsp14;PDF</a>
-        </div>
+            <span class="button-disabled"><i class="fa-light fa-code"></i>&emsp14;Code (<i>coming soon</i>)</span>
+            <span class="button-disabled"><i class="fa-light fa-gear-code"></i>&emsp14;Open-Source (<i>coming soon</i>)</span>
+          </div>
         </div>
       </div>
     </div>
@@ -153,6 +155,12 @@
     </div>
   </div>
 </section>
+
+<p style="text-align: center; font-style: italic; margin: 0.3em 0 2em 0;">
+  See our <a href="#faq" style="color:#8C1515; text-decoration:none;">FAQ</a> below for questions about open-sourcing, samples, etc.<br>
+  For other inquiries, reach out at:<br>
+  suzannah@stanford.edu, baiyushi@stanford.edu, stephentian@stanford.edu.
+</p>
 
 
 <div class="container is-max-widescreen">
@@ -361,10 +369,101 @@
 </div>
 
 <hr class="rounded">
-
-
 </section>
 </div>
+
+<section class="section" id="faq" style="background:white; color:black;">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3">Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-question">When will DexSkin be open-sourced?</button>
+      <div class="faq-answer">
+        <p>We plan to open-source sensor design and related software toward the end of 2025. Please keep an eye on our website for updates!</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Where can I learn more about related tactile devices?</button>
+      <div class="faq-answer">
+        <p>
+          Please see the
+          <a href="https://baogroup.stanford.edu" target="_blank">Stanford Bao Research Group</a>
+          for more exciting projects and applications!
+        </p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-question">Who should I contact for collaboration?</button>
+      <div class="faq-answer">
+        <p>Please email suzannah@stanford.edu, baiyushi@stanford.edu, and stephentian@stanford.edu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+#faq {
+  margin-top: 1.5em;
+  padding-top: 0;       
+}
+.faq-item {
+  margin-bottom: 1.2em;
+  overflow: hidden;
+}
+
+.faq-question {
+  position: relative;
+  width: 100%;
+  text-align: left;
+  background: white;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 1em 1.2em;
+  font-size: 1.2rem; /* larger text */
+  transition: all 0.25s ease;
+}
+
+.faq-question::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 6px;
+  height: 100%;
+  background: #8C1515;
+  transition: width 0.25s ease;
+}
+
+.faq-question:hover::before {
+  width: 15px; /* expands on hover */
+}
+
+.faq-answer {
+  display: none;
+  background: white;
+  color: #222;
+  padding: 0.9em 1.2em;
+  border-radius: 0 0 6px 6px;
+  font-size: 1.2rem;
+}
+
+.faq-question.active + .faq-answer {
+  display: block;
+}
+</style>
+
+<script>
+document.querySelectorAll('.faq-question').forEach(btn => {
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('active');
+  });
+});
+</script>
+
 
 </body>
 </html>
