@@ -216,7 +216,53 @@
     </div>
   </div>
 </div>
+<hr class="rounded">
+<div class="rows">
+  <h2 class="title is-3">DexSkin Capabilities</h2>
 
+  <div class="columns is-vcentered">
+    
+    <!-- LEFT: TABLE -->
+    <div class="column is-three-fifths">
+      <table class="table is-striped is-fullwidth is-narrow" style="margin:auto; max-width:900px;">
+        <thead>
+          <tr>
+            <th>Sensor</th>
+            <th>Area (mm²) &uarr;</th>
+            <th>Force res. (N) &darr;</th>
+            <th>Spatial res. (mm) &darr;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>ReSkin [17]</td><td>400+</td><td>&lt; 0.2</td><td>1.00</td></tr>
+          <tr><td>BioTac [22]</td><td>484</td><td>0.26</td><td>1.40</td></tr>
+          <tr><td>DISCO [15]</td><td>6107</td><td>&lt; 0.35</td><td>&ge; 0.7</td></tr>
+          <tr><td>GelTip [8]</td><td>3142</td><td>N/A</td><td>&ge; 3.33</td></tr>
+          <tr><td>DIGIT [6]</td><td>304</td><td>0.006</td><td>0.150</td></tr>
+          <tr><td>DIGIT360 [13]</td><td>2340</td><td>0.001</td><td>0.007</td></tr>
+          <tr>
+            <td><b>DexSkin (ours)</b></td>
+            <td><b>1944–6471+</b></td>
+            <td><b>0.086&dagger;</b></td>
+            <td><b>&le; 0.60*</b></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="font-size: 0.85rem; margin-top: 0.4em; margin-left: 0.2em;">
+        † RMSE of force estimation over 0–2.5 N normal loads. <br>
+        * Estimated from pitch size, machine-resolution dependent.
+      </div>
+    </div>
+
+    <!-- RIGHT: CAPTION -->
+    <div class="column is-two-fifths" style="margin-top:0; padding-top:0;">
+      <p class="content has-text-justified" style="font-size: 1rem; margin-top:0;">
+        Comparison of DexSkin framework to state-of-the-art tactile sensors. DexSkin enables the largest sensing area coverage, the finest spatial and force resolution among selected non-vision based systems.
+      </p>
+    </div>
+
+  </div>
+</div>
 <hr class="rounded">
 <div class="rows">
   <h2 class="title is-3">Dexterous Manipulation Tasks</h2>
