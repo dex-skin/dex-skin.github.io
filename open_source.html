@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DexSkin | Open-Source</title>
+  
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+    <style>
+      body {
+        font-family: 'Google Sans', sans-serif;
+      }
+  
+      .main-page-button {
+        position: absolute;
+        left: 18px;
+        top: 18px;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4em;
+        padding: 0.85em 1.2em;
+        background: white;
+        color: black !important;
+        text-decoration: none !important;
+        border-radius: 6px;
+        font-size: 1.05rem;
+      }
+  
+      .main-page-button:hover {
+        color: black !important;
+      }
+  
+      .main-page-button .arrow {
+        color: #8C1515;
+        display: inline-block;
+        transition: transform 0.2s ease;
+        font-size: 20px;
+        line-height: 1;
+      }
+  
+      .main-page-button:hover .arrow {
+        transform: translateX(-6px);
+      }
+
+      
+      ul {
+        list-style: disc;
+        margin-left: 1.5rem;
+      }
+    </style>
+  </head>
+
+<body>
+
+<section class="hero">
+  <div class="hero-body" style="position:relative;">
+
+    <a href="index.html" class="main-page-button">
+      <span class="arrow">←</span> Main Page
+    </a>
+
+    <video autoplay muted loop playsinline class="hero-video">
+      <source src="assets/teaser.mp4" type="video/mp4">
+    </video>
+    
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-2">DexSkin Open-Source</h1>
+      <p class="subtitle is-5">
+        Hardware, firmware, scripts, and documentation for building and using DexSkin.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <h2 class="title is-4">🎉 Open-Source Release</h2>
+    <p>
+        We are excited to release <b>DexSkin</b>! 🎊 <br>
+        <br>
+      
+        DexSkin is a soft, high-resolution, conformable tactile sensing system designed for <b>contact-rich robotic manipulation</b>. It enables dense, localized sensing across complex surfaces and supports learning-based control in real-world settings.
+      </p>
+    <hr>
+
+    <h2 class="title is-4">Getting Started</h2>
+
+    <p>
+        All DexSkin code, hardware files, and documentation are available on GitHub.
+        <br>
+        <a href="https://github.com/sdwistreich/dexskin" target="_blank"
+            style="display:inline-flex; align-items:center; gap:0.4em; margin-top:0.4rem; text-decoration:none; color:#8C1515;">
+        <i class="fab fa-github"></i> View Repository
+        </a>
+      </p>
+    <br>
+
+    <p>
+      The release contains the full stack needed to:
+    </p>
+    
+    <ul>
+      <li>
+        <b>Fabricate the DexSkin sensor</b> —
+        <a href="#assembly">assembly instructions</a> ·
+        <a href="https://github.com/sdwistreich/dexskin/tree/main/hardware" target="_blank">hardware files</a>
+      </li>
+    
+      <li>
+        <b>Set up + interface with the sensor</b> —
+        <a href="#firmware">setup guide</a> ·
+        <a href="https://github.com/sdwistreich/dexskin/tree/main/firmware" target="_blank">firmware</a> ·
+        <a href="https://github.com/sdwistreich/dexskin/tree/main/scripts/interface" target="_blank">interface scripts</a>
+      </li>
+    
+      <li>
+        <b>Integrate DexSkin with learning pipelines</b> —
+        <a href="#learning">developer guide</a> ·
+        <a href="https://github.com/sdwistreich/dexskin/tree/main/scripts/learning" target="_blank">learning code</a>
+      </li>
+    </ul>
+
+    <hr>
+
+    <h2 class="title is-4">Hardware & Assembly Instructions</h2>
+
+    <h3 id="assembly" class="title is-5">Finger Design & Assembly</h3>
+    <p>
+      Files for the DexSkin finger geometry, electrode layout, and assembly.
+    </p>
+
+    <h3 class="title is-5">Flexible PCB Interconnects</h3>
+    <p>
+      Flexible PCB designs used for routing and interconnection.
+    </p>
+
+    <h3 class="title is-5">Pneumatic Calibration</h3>
+    <p>
+      3D-printable parts and related assets for calibration.
+    </p>
+
+    <h3 class="title is-5">Readout PCB</h3>
+    <p>
+      Gerber files for fabricating the readout board.
+    </p>
+
+    <hr>
+
+    <h2 id="firmware" class="title is-4">Firmware & Interfacing Setup</h2>
+
+    <div class="content">
+
+        <p>This guide explains:</p>
+        <ul>
+          <li><a href="#firmware-setup">DexSkin firmware setup</a></li>
+          <li><a href="#readout-visualization-setup">Board readout and visualization scripts</a></li>
+        </ul>
+      
+        <p>Compatible with <b>Windows, macOS, and Linux</b></p>
+      
+        <hr>
+      
+        <h3 id="firmware-setup" class="title is-5">Firmware Setup</h3>
+      
+        <h4 class="title is-6">1. Install FTDI Drivers</h4>
+        <p>
+          If you haven’t worked with embedded systems before, you will need a driver to communicate with the onboard Serial USB.
+          Please visit and install the USB serial drivers:
+        </p>
+      
+        <p>
+          <a href="https://ftdichip.com/drivers/vcp-drivers/" target="_blank">
+            https://ftdichip.com/drivers/vcp-drivers/
+          </a>
+        </p>
+      
+        <ul>
+          <li>Select your OS and install</li>
+          <li><b>Linux:</b> typically already installed (check via Step #3)</li>
+        </ul>
+      
+        <hr>
+      
+        <h4 class="title is-6">2. Install Flashing Tool (esptool)</h4>
+        <p>
+          The esptool utility is a universal Python-based application used to communicate and flash in firmware with the ESP32 MCU series.
+        </p>
+      
+        <pre><code>pip install esptool</code></pre>
+      
+        <hr>
+      
+        <h4 class="title is-6">3. Identify Serial Port</h4>
+        <p>Connect the board via USB-C.</p>
+      
+        <p>
+          If there are two ports, orient the board such that ESP32 is facing up, antenna is on the right, and use the <b>top-left port</b>.
+        </p>
+      
+        <p>You need to identify the specific port and its name assigned to the connected board:</p>
+      
+        <p><b>Windows</b></p>
+        <p>
+          Right-click the Start menu, select Device Manager, and expand Ports (COM &amp; LPT).
+          Look for USB Serial Port (<code>COMx</code>).
+        </p>
+      
+        <p><b>macOS</b></p>
+        <pre><code>ls /dev/cu.usbserial*</code></pre>
+      
+        <p><b>Linux</b></p>
+        <pre><code>ls /dev/ttyUSB*</code></pre>
+      
+        <hr>
+      
+        <h4 class="title is-6">4. Flash Firmware</h4>
+        <p>
+          Download the provided
+          <a href="https://github.com/sdwistreich/dexskin/tree/main/firmware" target="_blank"><code>dexskin_finger_firmware.bin</code></a>.
+          Navigate to the firmware directory and run:
+        </p>
+      
+        <pre><code>esptool --chip esp32s3 --port PORT --baud 460800 write_flash 0x0 dexskin_finger_firmware.bin</code></pre>
+      
+        <p>Replace <code>PORT</code> with your device found in Step #3.</p>
+      
+        <p><b>Example (macOS):</b></p>
+        <pre><code>esptool --chip esp32s3 --port /dev/cu.usbserial-DP05L1VU --baud 460800 write_flash 0x0 dexskin_finger_firmware.bin</code></pre>
+      
+        <hr>
+      
+        <h4 class="title is-6">5. Troubleshooting</h4>
+      
+        <p><b>Automatic Boot:</b><br>
+          The board should enter flashing mode automatically once the flash command is executed.
+        </p>
+      
+        <p><b>If “Failed to connect”:</b></p>
+        <ol>
+          <li>Hold <b>User/Boot</b> on the top right of the board.</li>
+          <li>Press + release <b>Reset</b> on the bottom right of the board.</li>
+          <li>Release the <b>User/Boot</b> button before retrying the flash command.</li>
+          <li>Retry the flash command.</li>
+        </ol>
+      
+        <hr>
+      
+        <h4 class="title is-6">6. Completion</h4>
+        <p>When the terminal displays:</p>
+      
+        <pre><code>Hard resetting via RTS pin…</code></pre>
+      
+        <p>
+          the firmware update is complete.
+        </p>
+      
+        <p>
+          You may need to press the <b>Reset</b> button once more to cleanly power cycle and boot up the system.
+        </p>
+      
+        <hr>
+      
+        <h3 id="readout-visualization-setup" class="title is-5">Board Readout &amp; Visualization Scripts</h3>
+      
+        <h4 class="title is-6">Python Dependencies</h4>
+      
+        <p>
+          We provide two Python scripts for interfacing and visualizing DexSkin sensor readings.
+          Tested with Python 3.10 (Python ≥ 3.8 supported).
+        </p>
+      
+        <p><b>Required packages:</b></p>
+        <ul>
+          <li>PyQt5 (5.15.11)</li>
+          <li>pyqtgraph (0.13.7)</li>
+          <li>pyserial (3.5)</li>
+          <li>numpy (2.0.2)</li>
+        </ul>
+      
+        <p><b>Quick Setup (conda example):</b></p>
+        <pre><code>conda create -n dexskin_env python=3.10 -y
+      conda activate dexskin_env
+      pip install PyQt5==5.15.11 pyqtgraph==0.13.7 pyserial==3.5 numpy==2.0.2</code></pre>
+      
+        <hr>
+      
+        <h4 class="title is-6">Script Overview</h4>
+      
+        <p>
+          The software architecture is split into two independent processes that communicate via shared memory.
+          This allows the readout script to run at high priority for data logging, while the visualization script
+          consumes data for display without slowing down sensor sampling.
+        </p>
+      
+        <ul>
+          <li>
+            <b><a href="https://github.com/sdwistreich/dexskin/tree/main/scripts/interface" target="_blank"><code>scripts/interface/readout.py</code></a></b>:
+            Handles serial communication, packet decoding, and baseline normalization.
+            <b>Always run this script first</b>; it must be running for the visualization or any other application to access sensor data.
+          </li>
+      
+          <li>
+            <b><a href="https://github.com/sdwistreich/dexskin/tree/main/scripts/interface" target="_blank"><code>scripts/interface/visualize.py</code></a></b>:
+            Provides a real-time visualization of tactile data for both the left and right fingers.
+            Each taxel is displayed as a white dot, with dot size proportional to the raw sensor values
+            (sampled pressure / force magnitude).
+          </li>
+        </ul>
+      
+        <hr>
+      
+        <h4 class="title is-6">Developer Guide: Interfacing with Shared Memory</h4>
+      
+        <p>
+          The DexSkin system exposes its real-time data buffer to the operating system’s shared memory.
+          This allows developers to write their own scripts (e.g., for Machine Learning inference,
+          ROS robot control, or custom logging) without modifying the core driver.
+        </p>
+      
+        <p>
+          Any Python script running on the same machine can attach to the shared memory block as a client:
+        </p>
+      
+        <pre><code>SHM_NAME = 'dexskin_memory'
+      NUM_TAXELS = 120
+      
+      try:
+          self.shm = shm.SharedMemory(name=SHM_NAME)
+          self.frame_buffer = np.ndarray((NUM_TAXELS,), dtype=np.float32, buffer=self.shm.buf)
+          print(f"Attached to shared memory: {SHM_NAME}")
+      except FileNotFoundError:
+          print(f"ERROR: Shared memory block '{SHM_NAME}' not found.")
+          print("Please ensure the data providing script is running.")
+          sys.exit(1)</code></pre>
+      
+        <p>Then in other function calls, use:</p>
+      
+        <pre><code>self.frame_buffer.copy()</code></pre>
+      
+        <p>to access the latest data.</p>
+      
+      </div>
+
+
+    <hr>
+
+    <h2 class="title is-4">Interface Scripts</h2>
+    <p>
+      Scripts for board readout, tactile streaming, and live visualization.
+    </p>
+
+    <hr>
+
+    <h2 id="learning" class="title is-4">Learning Integration</h2>
+    <p>
+      Example code and interfaces for connecting DexSkin to downstream learning pipelines.
+    </p>
+
+    <hr>
+
+    <h2 class="title is-4">Documentation</h2>
+    <p>
+      Setup instructions, usage notes, and developer-facing guidance for working with DexSkin.
+    </p>
+
+  </div>
+</section>
+
+</body>
+</html>
