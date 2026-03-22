@@ -161,6 +161,13 @@
         #hamburger-btn { display: flex; }
         .main-page-button { left: 64px; }
       }
+
+      .section-divider {
+        border: none;
+        height: 2px;
+        background: #555;
+        margin: 2rem 0;
+      }
     </style>
   </head>
 
@@ -244,13 +251,14 @@
             </li>
           </ul>
 
-          <hr>
+          <hr class="section-divider">
 
           <h2 id="assembly" class="title is-4">Hardware & Assembly Instructions</h2>
           <p style="font-style: italic;">
             BS: Under construction (assembly video, and short written instructions/README style?)
           </p>
 
+          <hr class="section-divider">
           <h2 id="firmware" class="title is-4">Firmware & Interfacing Setup</h2>
 
           <div class="content">
@@ -260,8 +268,6 @@
               <li><a href="#firmware-setup">Firmware setup</a></li>
               <li><a href="#readout-visualization-setup">Board readout and visualization scripts</a></li>
             </ul>
-          
-            <p>Compatible with <b>Windows, macOS, and Linux</b></p>
           
             <hr>
           
@@ -299,10 +305,9 @@
             <p>Connect the board via USB-C.</p>
           
             <p>
-              If there are two ports, orient the board such that ESP32 is facing up, antenna is on the right, and use the <b>top-left port</b>.
+              If there are two ports, orient the board such that ESP32 is facing up, antenna is on the right, and use the <b>top-left port</b>. You need to identify the specific port and its name assigned to the connected board:.
             </p>
           
-            <p>You need to identify the specific port and its name assigned to the connected board:</p>
           
             <p><b>Windows</b></p>
             <p>
@@ -367,6 +372,7 @@
           
             <h3 id="readout-visualization-setup" class="title is-5">Board Readout &amp; Visualization Scripts</h3>
           
+
             <h4 class="title is-6">Python Dependencies</h4>
           
             <p>
@@ -392,24 +398,30 @@ pip install PyQt5==5.15.11 pyqtgraph==0.13.7 pyserial==3.5 numpy==2.0.2</code></
             <h4 class="title is-6">Script Overview</h4>
           
             <p>
-              The software architecture is split into two independent processes that communicate via shared memory.
-              This allows the readout script to run at high priority for data logging, while the visualization script
-              consumes data for display without slowing down sensor sampling.
+              The software architecture is split into two independent processes that communicate via shared memory:
             </p>
           
             <ul>
               <li>
-                <b><a href="https://github.com/sdwistreich/dexskin/tree/main/scripts/interface" target="_blank"><code>scripts/interface/readout.py</code></a></b>:
+                <b><a href="https://github.com/sdwistreich/dexskin/blob/main/scripts/interface/readout.py" target="_blank"><code>scripts/interface/readout.py</code></a></b>:
                 Handles serial communication, packet decoding, and baseline normalization.
                 <b>Always run this script first</b>; it must be running for the visualization or any other application to access sensor data.
               </li>
           
               <li>
-                <b><a href="https://github.com/sdwistreich/dexskin/tree/main/scripts/interface" target="_blank"><code>scripts/interface/visualize.py</code></a></b>:
+                <b><a href="https://github.com/sdwistreich/dexskin/tree/main/scripts/interface/visualize.py" target="_blank"><code>scripts/interface/visualize.py</code></a></b>:
                 Provides a real-time visualization of tactile data for both the left and right fingers.
                 Each taxel is displayed as a white dot, with dot size proportional to the raw sensor values
-                (sampled pressure / force magnitude).
+                (sampled pressure / force magnitude). If the script is running correctly, the visualization will look like:
               </li>
+              
+              <div style="text-align:center; margin: 1rem 0 0.5rem 0;">
+                <video autoplay muted loop playsinline style="width:50%; border-radius:10px;">
+                  <source src="assets/white_dot.mp4" type="video/mp4">
+                </video>
+                <p style="margin-top:0.5rem; font-size:0.95rem; color:#666;">
+                </p>
+              </div>
             </ul>
           
             <hr>
@@ -446,18 +458,27 @@ except FileNotFoundError:
           
           </div>
 
-          <hr>
+          <hr class="section-divider">
 
           <h2 id="learning" class="title is-4">Learning Integration</h2>
           <p>
-            Example code and interfaces for connecting DexSkin to downstream learning pipelines.
+            SW: Under construction.
           </p>
 
-          <hr>
+          <hr class="section-divider">
 
-          <h2 class="title is-4">Documentation</h2>
+          <h2 class="title is-4">BibTeX</h2>
           <p>
-            Setup instructions, usage notes, and developer-facing guidance for working with DexSkin.
+            <pre><code>@inproceedings{wistreich2025dexskin,
+              title={DexSkin: High-Coverage Conformable Robotic Skin for Learning Contact-Rich Manipulation},
+              author={Suzannah Wistreich and Baiyu Shi and Stephen Tian and Samuel Clarke and Michael Nath and Chengyi Xu and Zhenan Bao and Jiajun Wu},
+              booktitle={Conference on Robot Learning (CoRL)},
+              year={2025},
+              eprint={2509.18830},
+              archivePrefix={arXiv},
+              primaryClass={cs.RO},
+              url={https://arxiv.org/abs/2509.18830},
+          }</code></pre>
           </p>
 
         </div>
