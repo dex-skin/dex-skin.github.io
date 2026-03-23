@@ -460,9 +460,70 @@ except FileNotFoundError:
           <hr class="section-divider">
 
           <h2 id="learning" class="title is-4">Learning Integration</h2>
-          <p>
-            SW: Under construction.
-          </p>
+
+          <div class="content">
+            <p>
+              This guide gives a brief overview of data collection and base policy training with DexSkin. We also provide several sample scripts for RL fine-tuning with DexSkin, see files under <a href="https://github.com/sdwistreich/dexskin/tree/main/learning/scripts" target="_blank">learning/scripts</a> in the release repository.
+            </p>
+          
+            <hr>
+          
+            <h3 id="data-collection" class="title is-5">Data Collection</h3>
+            <p>
+              We collect real-world demonstrations using a teleoperated Franka robot setup equipped with DexSkin sensors.
+            </p>
+          
+            <p>Each demonstration consists of:</p>
+            <ul>
+              <li>Robot observations (e.g., proprioception, optional vision via wrist camera)</li>
+              <li>DexSkin tactile readings</li>
+              <li>Corresponding action trajectories</li>
+            </ul>
+          
+            <p>
+              These demonstrations are used to train an initial policy via imitation learning. In our setup, ~50 human demonstrations per task are sufficient to learn a reasonable base policy.
+            </p>
+          
+            <hr>
+          
+            <h3 id="base-policy-training" class="title is-5">Base Policy Training</h3>
+            <p>
+              We train a base manipulation policy using a standard <b>diffusion policy</b> formulation, though any imitation-learning framework will do. Please see our <a href="https://arxiv.org/pdf/2509.18830" target="_blank">paper</a> Appendix for training details and hyperparameters.
+            </p>
+          
+            <hr>
+          
+            <h3 id="rl-fine-tuning-with-dexskin" class="title is-5">RL Fine-Tuning with DexSkin</h3>
+            <p>
+              We provide a small set of <b>example residual RL scripts</b> to illustrate how DexSkin can be used in real-world, online learning settings. These scripts are provided as a helpful reference implementation, however, reward functions, force thresholds, termination conditions, etc. should be adapted to one's own target task and hardware setup.
+            </p>
+          
+            <h4 class="title is-6">Script Overview</h4>
+            <ul>
+              <li>
+                <b><a href="https://github.com/sdwistreich/dexskin/blob/main/learning/scripts/franka_env_with_policy.py" target="_blank"><code>./scripts/franka_env_with_policy.py</code></a></b>:
+                Defines a Gym-compatible Franka environment that combines a pretrained diffusion policy with a residual controller. The residual action modifies the base policy's gripper action online, where DexSkin signals are used to compute force-threshold rewards together with an action-magnitude penalty.
+              </li>
+          
+              <li>
+                <b><a href="https://github.com/sdwistreich/dexskin/blob/main/learning/scripts/residual_inference_train_env.py" target="_blank"><code>./scripts/residual_inference_train_env.py</code></a></b>:
+                Constructs a <code>FrankaEnvWithPolicy</code> environment and runs Franka rollouts with the base policy plus a residual controller, which is one of:
+                <ul>
+                  <li>(default) a learned residual policy</li>
+                  <li><code>--base_policy_only</code>: the base policy only</li>
+                  <li><code>--random_residual</code>: a random residual baseline</li>
+                </ul>
+                <p style="margin-top:0.5rem;">
+                  If neither <code>--base_policy_only</code> nor <code>--random_residual</code> is set, this script can also continue updating the learned residual policy online.
+                </p>
+              </li>
+          
+              <li>
+                <b><a href="https://github.com/sdwistreich/dexskin/blob/main/learning/scripts/residual_train.py" target="_blank"><code>./scripts/residual_train.py</code></a></b>:
+                Trains a residual SAC policy online on the Franka robot. This script loads the pretrained base policy, constructs the DexSkin-enabled <code>FrankaEnvWithPolicy</code> environment, performs online rollouts, updates the residual policy, and periodically saves checkpoints.
+              </li>
+            </ul>
+          </div>
 
           <hr class="section-divider">
 
