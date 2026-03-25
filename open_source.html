@@ -263,9 +263,153 @@
           <hr class="section-divider">
 
           <h2 id="assembly" class="title is-4">Hardware & Assembly Instructions</h2>
-          <p style="font-style: italic;">
-            BS: Under construction (assembly video, and short written instructions/README style?)
-          </p>
+
+          <div class="content">
+            <p>
+              This folder contains DexSkin hardware assets for fabricating the sensor, ordering the PCBs, and reproducing the calibration setup described in the paper.
+            </p>
+          
+            <hr>
+          
+            <h3 class="title is-5">Release Status</h3>
+          
+            <p>Currently available in this folder:</p>
+            <ul>
+              <li>Finger electrode SVG layout</li>
+              <li>Flexible PCB manufacturing files for the sensor array interconnects</li>
+              <li>Readout PCB Gerbers</li>
+              <li>Calibration fixture STLs</li>
+            </ul>
+          
+            <p>In progress (target: mid-April 2026):</p>
+            <ul>
+              <li>Readout board BOM</li>
+              <li>Calibration fabrication guide</li>
+              <li>Assembly and ordering recommendations</li>
+            </ul>
+          
+            <hr>
+          
+            <h3 class="title is-5">Folder Guide</h3>
+          
+            <h4 class="title is-6"><code>finger/</code></h4>
+            <ul>
+              <li>
+                <code>DexSkin_Electrode_design.svg</code>: Layout of top and bottom capacitive electrode layers for the finger design described in the paper
+                <ul>
+                  <li><em>For researchers interested in access to the stretchable cylindrical DexSkin form described in the paper, please contact Baiyu Shi at the Bao Group (<code>baiyushi@stanford.edu</code>) regarding sample availability.</em></li>
+                </ul>
+              </li>
+            </ul>
+          
+            <h4 class="title is-6"><code>fpcb/</code></h4>
+            <ul>
+              <li>
+                <code>dexskin_5pin_row_interconnection.zip</code> and <code>dexskin_12pin_column_interconnection.zip</code>: Gerber-ready flexible PCB files for the polyimide sensor array interconnects. Produces:
+                <ul>
+                  <li>5 x 12 taxel layout, mountable on flat or cylindrical grippers</li>
+                  <li>2.5 mm x 2.5 mm square taxels</li>
+                  <li>1.5 mm spacing between neighboring taxels</li>
+                </ul>
+              </li>
+            </ul>
+          
+            <p>Gerber layers included in the PCB fabrication files:</p>
+            <ul>
+              <li><strong>Mechanical Layer 1</strong>: PCB outline</li>
+              <li><strong>Top Overlay</strong>: top EMI shielding film outline</li>
+              <li><strong>Bottom Overlay</strong>: bottom stiffener outline</li>
+            </ul>
+          
+            <h4 class="title is-6"><code>readout_pcb/</code></h4>
+            <ul>
+              <li>
+                <code>dexskin_readout_pcb_v1.1.zip</code>: Manufacturing files for the 4-layer readout board used to read both finger arrays simultaneously, prepared as a fabrication-ready Gerber archive
+              </li>
+            </ul>
+          
+            <h4 class="title is-6"><code>calibration/</code></h4>
+            <ul>
+              <li><code>Final_Mold_Top.stl</code></li>
+              <li><code>Final_Mold_Bot.stl</code></li>
+              <li><code>Final_Mold_Supporting_Platform.stl</code></li>
+              <li><code>D20.8_Inner_Sleeve_TOP.stl</code></li>
+              <li>
+                <code>D20.8_Inner_Sleeve_BOT.stl</code>
+                <ul>
+                  <li>3D-printable parts used to mold the Ecoflex and build airtight chambers for the 3-minute transfer calibration procedure described in the paper.</li>
+                </ul>
+              </li>
+            </ul>
+          
+            <hr>
+          
+            <h3 class="title is-5">Assembly Guide</h3>
+          
+            <p>Assembly overview:</p>
+          
+            <blockquote>
+              <p>Placeholder: [video]</p>
+            </blockquote>
+          
+            <p>
+              For a full walkthrough, please see our assembly instruction video above.
+            </p>
+          
+            <p><strong>Materials</strong></p>
+            <ul>
+              <li>Two fabricated fPCB pieces</li>
+              <li>Thin double-sided tape</li>
+              <li>Nonconductive dielectric layer</li>
+              <li>Sharp scalpel for trimming dielectric and tape</li>
+            </ul>
+          
+            <p>
+              In our builds, we use a sandpaper-structured midlayer as the dielectric.
+            </p>
+          
+            <p><strong>Procedure</strong></p>
+            <ol>
+              <li><strong>Prepare base layer</strong>: Apply double-sided tape along the boundary of one fPCB piece.</li>
+              <li><strong>Attach dielectric</strong>: Laminate the dielectric layer onto the second fPCB piece, trimming as needed.</li>
+              <li><strong>Align electrodes</strong>: Carefully align the top and bottom electrode layers by matching the exposed copper taxels.</li>
+              <li><strong>Bond Assembly</strong>: Press around the edges to ensure the double-sided tape bonds the two pieces together securely.</li>
+            </ol>
+          
+            <p>
+              After assembly, verify the sensor by following the firmware instructions provided in <a href="../firmware/README.md"><code>../firmware/README.md</code></a>. Then, run:
+            </p>
+            <ul>
+              <li><a href="../firmware/scripts/readout.py"><code>../firmware/scripts/readout.py</code></a></li>
+              <li><a href="../firmware/scripts/visualize.py"><code>../firmware/scripts/visualize.py</code></a></li>
+            </ul>
+          
+            <p>
+              to verify that the sensor reads out correctly and view the real-time visualization
+            </p>
+          
+            <blockquote>
+              <p>Placeholder: [pending FPCB interaction GIF here]</p>
+            </blockquote>
+          
+            <hr>
+          
+            <h3 class="title is-5">Manufacturing Notes</h3>
+            <ul>
+              <li>The ZIP archives in <code>fpcb/</code> and <code>readout_pcb/</code> are intended for direct submission to a PCB manufacturer.</li>
+              <li>If your manufacturer asks for layer clarification on the flexible PCB files, you may use the layer notes above.</li>
+            </ul>
+          
+            <hr>
+          
+            <h3 class="title is-5">Planned Additions</h3>
+            <ul>
+              <li>Readout PCB BOM, including alternative parts where distributor availability changes</li>
+              <li>Calibration fixture build notes</li>
+              <li>Step-by-step assembly guidance</li>
+            </ul>
+          
+          </div>
 
           <hr class="section-divider">
           <h2 id="firmware" class="title is-4">Firmware & Interfacing Setup</h2>
