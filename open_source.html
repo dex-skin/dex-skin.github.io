@@ -151,6 +151,15 @@
         padding-top: 1rem;
       }
 
+      .section-label {
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 0.25rem;
+      }
+
       .content-column {
         max-width: 900px;
         margin: 0 auto;
@@ -261,17 +270,16 @@
           </ul>
 
           <hr class="section-divider">
-
-          <h2 id="assembly" class="title is-4">Hardware & Assembly Instructions</h2>
+          <div id="assembly" class="section-label">Guide</div>
+          <h2 class="title is-4">Hardware & Assembly Instructions</h2>
 
           <div class="content">
-            <p>
-              This folder contains DexSkin hardware assets for fabricating the sensor, ordering the PCBs, and reproducing the calibration setup described in the paper.
-            </p>
-          
-            <hr>
-          
-            <h3 class="title is-5">Release Status</h3>
+            <p>This guide explains DexSkin sensor fabrication and hardware assets in available our release:</p>
+            <ul>
+              <li><a href="#assembly-guide">DexSkin sensor fabrication guide</a></li>
+              <li><a href="#file-guide">File overview</a></li>
+            </ul>
+            <!-- <h3 class="title is-5">Release Status</h3>
           
             <p>Currently available in this folder:</p>
             <ul>
@@ -286,11 +294,63 @@
               <li>Readout board BOM</li>
               <li>Calibration fabrication guide</li>
               <li>Assembly and ordering recommendations</li>
-            </ul>
+            </ul> -->
           
             <hr>
+
+            <h3 id="assembly-guide" class="title is-5">Sensor Fabrication Guide</h3>
+
+            
+            <video id="teaser" autoplay muted loop controls width="100%" style="margin-bottom: 0.5rem;">
+              <source src="media/videos/DexSkin_assembly_video_small.mp4" type="video/mp4">
+            </video>
+            <p style="font-style: italic;"><strong>Instructional Video</strong>: 1x Speed Sensor Fabrication</p>
+            
           
-            <h3 class="title is-5">Folder Guide</h3>
+            <p><strong>Materials</strong></p>
+            <ul>
+              <li>Two fabricated fPCB pieces</li>
+              <li>Thin double-sided tape</li>
+              <li>Nonconductive dielectric layer</li>
+              <li>Sharp scalpel for trimming dielectric and tape</li>
+            </ul>
+          
+            <p>
+              In our builds, we use a sandpaper-structured midlayer as the dielectric.
+            </p>
+          
+            <p><strong>Procedure</strong></p>
+            <p style="font-style: italic;">
+              For a full walkthrough, please see our assembly instruction video above.
+            </p>
+            <ol>
+              <li>
+                <strong>Prepare base layer</strong>: Apply double-sided tape along the boundary of one fPCB piece.
+              </li>
+              <li>
+                <strong>Attach dielectric</strong> (<a href="javascript:void(0)" onclick="seekVideo(5)">0:05</a>): 
+                Laminate the dielectric layer onto the second fPCB piece, trimming as needed.
+              </li>
+              <li>
+                <strong>Align electrodes</strong> (<a href="javascript:void(0)" onclick="seekVideo(82)">1:22</a>): 
+                Carefully align the top and bottom electrode layers by matching the exposed copper taxels.
+              </li>
+              <li>
+                <strong>Bond Assembly</strong> (<a href="javascript:void(0)" onclick="seekVideo(106)">1:46</a>): 
+                Press around the edges to ensure the double-sided tape bonds the two pieces together securely.
+              </li>
+            </ol>
+          
+            <p>
+              After assembly, verify the sensor by following the firmware instructions provided in the <a href="#firmware">Firmware & Interfacing Setup</a> to flash and interface with the sensor. If assembled correctly, the sensor should appear as follows:
+            </p>
+
+            <video id="teaser" autoplay muted loop controls width="100%" style="margin-bottom: 0.5rem;">
+              <source src="media/videos/DexSkin_post_assembly.mp4" type="video/mp4">
+            </video>
+            <hr>
+            
+            <h3 id="file-guide" class="title is-5">File Overview</h3>
           
             <h4 class="title is-6"><code>finger/</code></h4>
             <ul>
@@ -344,55 +404,6 @@
           
             <hr>
           
-            <h3 class="title is-5">Assembly Guide</h3>
-          
-            <p>Assembly overview:</p>
-          
-            <blockquote>
-              <p>Placeholder: [video]</p>
-            </blockquote>
-          
-            <p>
-              For a full walkthrough, please see our assembly instruction video above.
-            </p>
-          
-            <p><strong>Materials</strong></p>
-            <ul>
-              <li>Two fabricated fPCB pieces</li>
-              <li>Thin double-sided tape</li>
-              <li>Nonconductive dielectric layer</li>
-              <li>Sharp scalpel for trimming dielectric and tape</li>
-            </ul>
-          
-            <p>
-              In our builds, we use a sandpaper-structured midlayer as the dielectric.
-            </p>
-          
-            <p><strong>Procedure</strong></p>
-            <ol>
-              <li><strong>Prepare base layer</strong>: Apply double-sided tape along the boundary of one fPCB piece.</li>
-              <li><strong>Attach dielectric</strong>: Laminate the dielectric layer onto the second fPCB piece, trimming as needed.</li>
-              <li><strong>Align electrodes</strong>: Carefully align the top and bottom electrode layers by matching the exposed copper taxels.</li>
-              <li><strong>Bond Assembly</strong>: Press around the edges to ensure the double-sided tape bonds the two pieces together securely.</li>
-            </ol>
-          
-            <p>
-              After assembly, verify the sensor by following the firmware instructions provided in <a href="../firmware/README.md"><code>../firmware/README.md</code></a>. Then, run:
-            </p>
-            <ul>
-              <li><a href="../firmware/scripts/readout.py"><code>../firmware/scripts/readout.py</code></a></li>
-              <li><a href="../firmware/scripts/visualize.py"><code>../firmware/scripts/visualize.py</code></a></li>
-            </ul>
-          
-            <p>
-              to verify that the sensor reads out correctly and view the real-time visualization
-            </p>
-          
-            <blockquote>
-              <p>Placeholder: [pending FPCB interaction GIF here]</p>
-            </blockquote>
-          
-            <hr>
           
             <h3 class="title is-5">Manufacturing Notes</h3>
             <ul>
@@ -412,7 +423,8 @@
           </div>
 
           <hr class="section-divider">
-          <h2 id="firmware" class="title is-4">Firmware & Interfacing Setup</h2>
+          <div id="firmware" class="section-label">Guide</div>
+          <h2 class="title is-4">Firmware & Interfacing Setup</h2>
 
           <div class="content">
 
@@ -612,8 +624,8 @@ except FileNotFoundError:
           </div>
 
           <hr class="section-divider">
-
-          <h2 id="learning" class="title is-4">Learning Integration</h2>
+          <div id="learning"  class="section-label">Guide</div>
+          <h2 class="title is-4">Learning Integration</h2>
 
           <div class="content">
             <p>
@@ -709,6 +721,11 @@ except FileNotFoundError:
       const isOpen = sidebar.classList.toggle('open');
       btn.classList.toggle('active', isOpen);
       wrapper.classList.toggle('shifted', isOpen);
+    }
+    function seekVideo(t) {
+      const v = document.getElementById('teaser');
+      v.currentTime = t;
+      v.play();
     }
   </script>
 
