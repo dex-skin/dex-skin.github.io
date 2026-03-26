@@ -351,51 +351,43 @@
             <hr>
             
             <h3 id="file-guide" class="title is-5">File Overview</h3>
-          
-            <h4 class="title is-6"><code>finger/</code></h4>
+            Below we provide a brief overview of files available in our release. For full details, please see the <a href="https://github.com/sdwistreich/dexskin/tree/main/hardware" target="_blank">/hardware</a> section of our repository.
             <ul>
               <li>
-                <code>DexSkin_Electrode_design.svg</code>: Layout of top and bottom capacitive electrode layers for the finger design described in the paper
+                <code>finger/DexSkin_Electrode_design.svg</code>: Layout of top and bottom capacitive electrode layers for the finger design described in the paper
                 <ul>
                   <li><em>For researchers interested in access to the stretchable cylindrical DexSkin form described in the paper or tactile arrays in other grid formats, please contact Baiyu Shi at the Bao Group (<code>baiyushi@stanford.edu</code>) regarding sample availability.</em></li>
                 </ul>
               </li>
             </ul>
           
-            <h4 class="title is-6"><code>fpcb/</code></h4>
             <ul>
               <li>
-                <code>dexskin_5pin_row_interconnection.zip</code> and <code>dexskin_12pin_column_interconnection.zip</code>: Gerber-ready flexible PCB files for the polyimide sensor array interconnects. Produces:
+                <code>fpcb/dexskin_5pin_row_interconnection.zip</code> and <code>fpcb/dexskin_12pin_column_interconnection.zip</code>: Gerber-ready flexible PCB files for the polyimide sensor array interconnects. Produces:
                 <ul>
                   <li>5 x 12 taxel layout, mountable on flat or cylindrical grippers</li>
                   <li>2.5 mm x 2.5 mm square taxels</li>
                   <li>1.5 mm spacing between neighboring taxels</li>
+                  <li>               <p>Gerber layers included in the PCB fabrication files:</p>
+                    <ul>
+                      <li><strong>Mechanical Layer 1</strong>: PCB outline</li>
+                      <li><strong>Top Overlay</strong>: top EMI shielding film outline</li>
+                      <li><strong>Bottom Overlay</strong>: bottom stiffener outline</li>
+                    </ul>
+                </li>
                 </ul>
               </li>
             </ul>
           
-            <p>Gerber layers included in the PCB fabrication files:</p>
-            <ul>
-              <li><strong>Mechanical Layer 1</strong>: PCB outline</li>
-              <li><strong>Top Overlay</strong>: top EMI shielding film outline</li>
-              <li><strong>Bottom Overlay</strong>: bottom stiffener outline</li>
-            </ul>
-          
-            <h4 class="title is-6"><code>readout_pcb/</code></h4>
+
             <ul>
               <li>
-                <code>dexskin_readout_pcb_v1.1.zip</code>: Manufacturing files for the 4-layer readout board used to read both finger arrays simultaneously, prepared as a fabrication-ready Gerber archive
+                <code>readout_pcb/dexskin_readout_pcb_v1.1.zip</code>: Manufacturing files for the 4-layer readout board used to read both finger arrays simultaneously, prepared as a fabrication-ready Gerber archive
               </li>
             </ul>
           
-            <h4 class="title is-6"><code>calibration/</code></h4>
             <ul>
-              <li><code>Final_Mold_Top.stl</code></li>
-              <li><code>Final_Mold_Bot.stl</code></li>
-              <li><code>Final_Mold_Supporting_Platform.stl</code></li>
-              <li><code>D20.8_Inner_Sleeve_TOP.stl</code></li>
-              <li>
-                <code>D20.8_Inner_Sleeve_BOT.stl</code>
+              <li><code>calibration/*.stl</code></li>
                 <ul>
                   <li>3D-printable parts used to mold the Ecoflex and build airtight chambers for the 3-minute transfer calibration procedure described in the paper.</li>
                 </ul>
@@ -411,14 +403,7 @@
               <li>If your manufacturer asks for layer clarification on the flexible PCB files, you may use the layer notes above.</li>
             </ul>
           
-            <hr>
-          
-            <h3 class="title is-5">Planned Additions</h3>
-            <ul>
-              <li>Readout PCB BOM, including alternative parts where distributor availability changes</li>
-              <li>Calibration fixture build notes</li>
-              <li>Step-by-step assembly guidance</li>
-            </ul>
+        
           
           </div>
 
