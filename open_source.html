@@ -286,14 +286,13 @@
               <li>Finger electrode SVG layout</li>
               <li>Flexible PCB manufacturing files for the sensor array interconnects</li>
               <li>Readout PCB Gerbers</li>
+              <li>Readout board BOM (<a href="https://docs.google.com/spreadsheets/d/1Eq13xsM3V4M5Ytnvt6t9q3BiPgX_jyD20QcXJk1k7uI/edit?usp=drive_link" target="_blank" rel="noopener noreferrer">Google Sheets BOM</a>)</li>
               <li>Calibration fixture STLs</li>
             </ul>
           
-            <p>In progress (target: mid-April 2026):</p>
+            <p>In progress (target: early-June 2026):</p>
             <ul>
-              <li>Readout board BOM</li>
               <li>Calibration fabrication guide</li>
-              <li>Assembly and ordering recommendations</li>
             </ul> -->
           
             <hr>
@@ -385,7 +384,14 @@
 
             <ul>
               <li>
-                <code>readout_pcb/dexskin_readout_pcb_v1.1.zip</code>: Manufacturing files for the 4-layer readout board used to read both finger arrays simultaneously, prepared as a fabrication-ready Gerber archive
+                <code>readout_pcb/</code>: Folder containing the readout-board release files for the 4-layer board used to read both finger arrays simultaneously.
+                <ul>
+                  <li><code>readout_pcb/dexskin_readout_pcb_v1.1.zip</code>: fabrication-ready Gerber archive for board manufacturing.</li>
+                  <li><a href="https://docs.google.com/spreadsheets/d/1Eq13xsM3V4M5Ytnvt6t9q3BiPgX_jyD20QcXJk1k7uI/edit?usp=drive_link" target="_blank" rel="noopener noreferrer">Readout board BOM (Google Sheets)</a>: use this as the component purchasing and reference during assembly.</li>
+                  <li><a href="https://drive.google.com/file/d/12cBjuSkDOK4sSdO-6o_hLZ_oLs0DSXpN/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Interactive board reference (iBOM / ibom.html)</a>: use the iBOM together with the BOM to identify where each named component should be placed on the PCB. The iBOM highlights the corresponding component locations on the board, making pick-and-place and manual assembly easy to follow.</li>
+                  <li><a href="https://drive.google.com/file/d/1KX0iqCgRmRGfAknBpAQ5CFr0nBlGS7xM/view?usp=drive_link" target="_blank" rel="noopener noreferrer">Highlighted jumper reference image</a>: use this annotated image to verify the appearance of the assembled board and to identify the specific 0 ohm jumper locations described below.</li>
+                  <li><strong>Jumper population instructions:</strong> under the <code>GARD</code> label, populate only the two 0 ohm jumpers that connect <code>P0</code> to the center pad and <code>P1</code> to the center pad. Leave <code>P4</code> and <code>P5</code> open. On the left jumper group labeled <code>3V3 FT +5V</code>, populate the 0 ohm jumper between <code>FT</code> and <code>+5V</code>, and leave <code>3V3</code> open.</li>
+                </ul>
               </li>
             </ul>
           
